@@ -16,9 +16,9 @@ choices:
 
 ---
 question: |
-  Quelles types de protection s'appliquent à l'assurance vie de base de l'adherent?
+  Quelles types de protection s'appliquent à l'assurance-vie de base de l'adhérent?
 fields:
-  - "Cochez les elements qui s'appliquent": type_protection
+  - "Cochez les éléments qui s'appliquent": type_protection
     datatype: checkboxes
     choices:
       - Individuel
@@ -27,7 +27,7 @@ fields:
       - Couple
 ---
 question: |
-  Les protections qui s'appliquent a la vie de base de l'adherent :
+  Les protections qui s'appliquent à la vie de base de l'adhérent :
 subquestion: |
   % if type_protection['Individuel']:
   Vous avez choisi l'Individuel.
@@ -67,17 +67,17 @@ code: |
     nb_fois = 'Montant en $'
 ---
 mandatory : True
-question: Quel est le volume assure?
+question: Quel est le volume assuré?
 fields:
   - ${nb_fois}: montant
     datatype: number
 ---
 mandatory : True
 question: |
-  Détermination de la methode d'arrondi, des maximum et minimum d'assurance?
+  Détermination de la méthode d'arrondi, des maximum et minimum d'assurance?
 
 field: type_arrondi
 choices:
-  - Superieur
-  - Inferieur
+  - Supérieur
+  - Inférieur
   - Plus proche
