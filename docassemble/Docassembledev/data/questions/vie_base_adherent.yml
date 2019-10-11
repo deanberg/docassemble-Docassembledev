@@ -1,0 +1,83 @@
+metadata:
+  title: Garantie vie de base adherent
+  short title: vie_base_adherent
+  documentation: "https://docassemble.org/docs/fields.html#fields checkboxes"
+  example start: 1
+  example end: 2
+---
+mandatory : True
+question : |
+  La garantie vie de base de l'adherent est-elle obligatoire ou facultative?
+  
+field: type_garantie
+choices:
+  - Obligatoire
+  - Facultative
+
+---
+question: |
+  Quelles types de protection s'appliquent à l'assurance vie de base de l'adherent?
+fields:
+  - "Cochez les elements qui s'appliquent": type_protection
+    datatype: checkboxes
+    choices:
+      - Individuel
+      - Familial
+      - Monoparental
+      - Couple
+---
+question: |
+  Les protections qui s'appliquent a la vie de base de l'adherent :
+subquestion: |
+  % if type_protection['Individuel']:
+  Vous avez choisi l'Individuel.
+  % endif
+  % if type_protection['Familial']:
+  Vous avez choisi la protection Familial.
+  % endif
+  % if type_protection['Couple']:
+  Vous avez choisi la protection Couple.
+  % endif
+  % if type_protection['Monoparental']:
+  Vous avez choisi la protection Monoparental.
+  % endif
+  
+  In Python, `type_protection` is
+  `${ repr(type_protection) }`.
+mandatory: True
+buttons:
+  - Continue: continue
+---
+code: |
+  variable_as_code = text_type(type_protection.elements)
+
+---
+mandatory : True
+question : |
+  Le type de montant est-il en fonction du salaire ou fixe?  
+field: type_montant
+choices:
+  - Fonction du salaire
+  - Fixe
+---
+code: |
+  if type_montant == 'Fonction du salaire':
+    nb_fois = 'Nombre de fois le salaire'
+  else:
+    nb_fois = 'Montant en $'
+---
+mandatory : True
+question: Quel est le volume assure?
+fields:
+  - ${nb_fois}: montant
+    datatype: number
+---
+mandatory : True
+question: |
+  Détermination de la methode d'arrondi, des maximum et minimum d'assurance?
+
+field: type_arrondi
+choices:
+  - Superieur
+  - Inferieur
+  - Plus proche
