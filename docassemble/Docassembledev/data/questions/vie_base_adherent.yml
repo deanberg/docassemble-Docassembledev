@@ -1,5 +1,5 @@
 metadata:
-  title: Garantie vie de base adherent
+  title: Garantie vie de base de adherent
   short title: vie_base_adherent
   documentation: "https://docassemble.org/docs/fields.html#fields checkboxes"
   example start: 1
@@ -7,7 +7,7 @@ metadata:
 ---
 mandatory : True
 question : |
-  La garantie vie de base de l'adherent est-elle obligatoire ou facultative?
+  La garantie vie de base de l'adhérent est-elle obligatoire ou facultative?
   
 field: type_garantie
 choices:
